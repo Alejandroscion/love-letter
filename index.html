@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
 
-  <!-- 🔴 CLAVE PARA CELULAR -->
+  <!-- CLAVE PARA CELULAR -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Para Ti 💖</title>
+  <title>Para Veronica 💖</title>
 
   <!-- Fuente -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
     }
 
     .container {
@@ -31,15 +30,16 @@
       max-width: 360px;
     }
 
-    .hint {
+    .play-btn {
+      background: #c2185b;
+      color: white;
+      border: none;
+      padding: 14px 22px;
+      border-radius: 30px;
       font-size: 1.2rem;
-      color: #b0005f;
-      margin-bottom: 15px;
-      animation: blink 1.5s infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0.4; }
+      cursor: pointer;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
     }
 
     #envelope {
@@ -50,7 +50,6 @@
       background-color: #d9534f;
       border-radius: 6px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-      cursor: pointer;
     }
 
     .front {
@@ -86,7 +85,7 @@
       border-radius: 6px;
       padding: 12px;
       box-sizing: border-box;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       text-align: center;
       transition: 0.6s;
     }
@@ -113,12 +112,17 @@
 <body>
 
 <div class="container">
-  <div class="hint">💖 Toca el sobre 💖</div>
+
+  <!-- BOTÓN CLAVE PARA LA MÚSICA -->
+  <button class="play-btn" id="playBtn">
+    🎵 Tocar para escuchar música
+  </button>
 
   <div id="envelope">
     <div class="front flap"></div>
     <div class="front pocket"></div>
 
+    <!-- TEXTO EXACTO QUE PEDISTE -->
     <div class="letter">
       <p><strong>Para: Veronica 💌</strong></p>
       <p>Llegaste sin aviso</p>
@@ -128,27 +132,29 @@
   </div>
 
   <div class="sorpresa" id="sorpresa">
-    💕 Siempre serás especial para mí 💕
+    💕 Siempre serás mi elección 💕
   </div>
+
 </div>
 
-<!-- 🎵 Música -->
+<!-- MÚSICA -->
 <audio id="music" loop>
   <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_4f84b8d6d0.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+  const playBtn = document.getElementById("playBtn");
   const envelope = document.getElementById("envelope");
   const music = document.getElementById("music");
   const sorpresa = document.getElementById("sorpresa");
 
-  envelope.addEventListener("click", () => {
+  playBtn.addEventListener("click", () => {
+    music.play();
     envelope.classList.add("open");
-    music.play().catch(() => {});
     sorpresa.style.display = "block";
+    playBtn.style.display = "none";
   });
 </script>
 
 </body>
 </html>
-
