@@ -2,34 +2,51 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+
+  <!-- 🔴 CLAVE PARA CELULAR -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Para Ti 💖</title>
 
   <!-- Fuente -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
 
   <style>
     body {
-      background: linear-gradient(180deg, #f3e7ff, #ffe6f0);
       margin: 0;
-      padding: 0;
+      height: 100vh;
+      background: linear-gradient(180deg, #f3e7ff, #ffe6f0);
       font-family: "Dancing Script", cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
     }
 
-    .envlope-wrapper {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+    .container {
+      text-align: center;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .hint {
+      font-size: 1.2rem;
+      color: #b0005f;
+      margin-bottom: 15px;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0.4; }
     }
 
     #envelope {
       position: relative;
-      width: 260px;
-      height: 170px;
+      width: 280px;
+      height: 180px;
+      margin: auto;
       background-color: #d9534f;
       border-radius: 6px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.25);
@@ -44,19 +61,19 @@
     }
 
     .flap {
-      border-left: 130px solid transparent;
-      border-right: 130px solid transparent;
-      border-bottom: 80px solid transparent;
-      border-top: 90px solid #d9534f;
+      border-left: 140px solid transparent;
+      border-right: 140px solid transparent;
+      border-bottom: 90px solid transparent;
+      border-top: 100px solid #d9534f;
       transform-origin: top;
+      transition: 0.6s;
     }
 
     .pocket {
-      border-left: 130px solid #f5a3a2;
-      border-right: 130px solid #f5a3a2;
-      border-bottom: 85px solid #ff6f61;
-      border-top: 85px solid transparent;
-      border-radius: 0 0 6px 6px;
+      border-left: 140px solid #f5a3a2;
+      border-right: 140px solid #f5a3a2;
+      border-bottom: 90px solid #ff6f61;
+      border-top: 90px solid transparent;
     }
 
     .letter {
@@ -67,118 +84,55 @@
       left: 5%;
       top: 5%;
       border-radius: 6px;
-      text-align: center;
       padding: 12px;
       box-sizing: border-box;
       font-size: 1.1rem;
-    }
-
-    .letter p {
-      margin: 8px 0;
+      text-align: center;
+      transition: 0.6s;
     }
 
     .open .flap {
       transform: rotateX(180deg);
-      transition: 0.6s;
       z-index: 1;
     }
 
     .open .letter {
-      transform: translateY(-110px);
-      transition: 0.6s;
+      transform: translateY(-115px);
       z-index: 2;
-    }
-
-    .hearts {
-      position: absolute;
-      top: 60px;
-      left: 0;
-      right: 0;
-      pointer-events: none;
-    }
-
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: #e60073;
-      transform: rotate(45deg);
-      animation: float 6s infinite ease-in;
-    }
-
-    .heart::before,
-    .heart::after {
-      content: "";
-      width: 20px;
-      height: 20px;
-      background: #e60073;
-      border-radius: 50%;
-      position: absolute;
-    }
-
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-
-    .heart::after {
-      left: -10px;
-      top: 0;
-    }
-
-    .heart:nth-child(1) { left: 20%; animation-delay: 0s; }
-    .heart:nth-child(2) { left: 50%; animation-delay: 1s; }
-    .heart:nth-child(3) { left: 80%; animation-delay: 2s; }
-
-    @keyframes float {
-      0% { bottom: 0; opacity: 1; }
-      100% { bottom: 500px; opacity: 0; }
     }
 
     .sorpresa {
       margin-top: 20px;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: #c2185b;
       display: none;
-      text-align: center;
-      padding: 10px;
-    }
-
-    @media (max-width: 480px) {
-      #envelope {
-        transform: scale(0.95);
-      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="envlope-wrapper">
-  <div id="envelope" class="close">
+<div class="container">
+  <div class="hint">💖 Toca el sobre 💖</div>
+
+  <div id="envelope">
     <div class="front flap"></div>
     <div class="front pocket"></div>
 
     <div class="letter">
-      <p><strong>Para: Veronica 💖</strong></p>
-      <p>Eres esa persona que llegó sin aviso</p>
-      <p>y se quedó en mi corazón.</p>
-      <p>Te amo mi princesa ✨</p>
-    </div>
-
-    <div class="hearts">
-      <div class="heart"></div>
-      <div class="heart"></div>
-      <div class="heart"></div>
+      <p><strong>Para ti 💌</strong></p>
+      <p>Llegaste sin aviso</p>
+      <p>y te quedaste en mi corazón.</p>
+      <p>Gracias por existir ✨</p>
     </div>
   </div>
 
   <div class="sorpresa" id="sorpresa">
-    💕 Eres mi Unico amor te Amo 💕
+    💕 Siempre serás especial para mí 💕
   </div>
 </div>
 
-<!-- Música romántica -->
+<!-- 🎵 Música -->
 <audio id="music" loop>
   <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_4f84b8d6d0.mp3" type="audio/mpeg">
 </audio>
@@ -188,17 +142,9 @@
   const music = document.getElementById("music");
   const sorpresa = document.getElementById("sorpresa");
 
-  // Abrir automáticamente
-  setTimeout(() => {
-    envelope.classList.add("open");
-    music.play().catch(()=>{});
-    sorpresa.style.display = "block";
-  }, 1200);
-
-  // Abrir al tocar
   envelope.addEventListener("click", () => {
     envelope.classList.add("open");
-    music.play().catch(()=>{});
+    music.play().catch(() => {});
     sorpresa.style.display = "block";
   });
 </script>
