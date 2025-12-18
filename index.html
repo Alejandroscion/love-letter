@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Para Ti 💖</title>
+
+  <!-- Fuente -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(180deg, #f3e7ff, #ffe6f0);
+      margin: 0;
+      padding: 0;
+      font-family: "Dancing Script", cursive;
+      overflow: hidden;
+    }
+
+    .envlope-wrapper {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #envelope {
+      position: relative;
+      width: 260px;
+      height: 170px;
+      background-color: #d9534f;
+      border-radius: 6px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      cursor: pointer;
+    }
+
+    .front {
+      position: absolute;
+      width: 0;
+      height: 0;
+      z-index: 3;
+    }
+
+    .flap {
+      border-left: 130px solid transparent;
+      border-right: 130px solid transparent;
+      border-bottom: 80px solid transparent;
+      border-top: 90px solid #d9534f;
+      transform-origin: top;
+    }
+
+    .pocket {
+      border-left: 130px solid #f5a3a2;
+      border-right: 130px solid #f5a3a2;
+      border-bottom: 85px solid #ff6f61;
+      border-top: 85px solid transparent;
+      border-radius: 0 0 6px 6px;
+    }
+
+    .letter {
+      position: absolute;
+      background: #fff;
+      width: 90%;
+      height: 90%;
+      left: 5%;
+      top: 5%;
+      border-radius: 6px;
+      text-align: center;
+      padding: 12px;
+      box-sizing: border-box;
+      font-size: 1.1rem;
+    }
+
+    .letter p {
+      margin: 8px 0;
+    }
+
+    .open .flap {
+      transform: rotateX(180deg);
+      transition: 0.6s;
+      z-index: 1;
+    }
+
+    .open .letter {
+      transform: translateY(-110px);
+      transition: 0.6s;
+      z-index: 2;
+    }
+
+    .hearts {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #e60073;
+      transform: rotate(45deg);
+      animation: float 6s infinite ease-in;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: #e60073;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    .heart:nth-child(1) { left: 20%; animation-delay: 0s; }
+    .heart:nth-child(2) { left: 50%; animation-delay: 1s; }
+    .heart:nth-child(3) { left: 80%; animation-delay: 2s; }
+
+    @keyframes float {
+      0% { bottom: 0; opacity: 1; }
+      100% { bottom: 500px; opacity: 0; }
+    }
+
+    .sorpresa {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      color: #c2185b;
+      display: none;
+      text-align: center;
+      padding: 10px;
+    }
+
+    @media (max-width: 480px) {
+      #envelope {
+        transform: scale(0.95);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="envlope-wrapper">
+  <div id="envelope" class="close">
+    <div class="front flap"></div>
+    <div class="front pocket"></div>
+
+    <div class="letter">
+      <p><strong>Para: Veronica 💖</strong></p>
+      <p>Eres esa persona que llegó sin aviso</p>
+      <p>y se quedó en mi corazón.</p>
+      <p>Te amo mi princesa ✨</p>
+    </div>
+
+    <div class="hearts">
+      <div class="heart"></div>
+      <div class="heart"></div>
+      <div class="heart"></div>
+    </div>
+  </div>
+
+  <div class="sorpresa" id="sorpresa">
+    💕 Eres mi Unico amor te Amo 💕
+  </div>
+</div>
+
+<!-- Música romántica -->
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_4f84b8d6d0.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const envelope = document.getElementById("envelope");
+  const music = document.getElementById("music");
+  const sorpresa = document.getElementById("sorpresa");
+
+  // Abrir automáticamente
+  setTimeout(() => {
+    envelope.classList.add("open");
+    music.play().catch(()=>{});
+    sorpresa.style.display = "block";
+  }, 1200);
+
+  // Abrir al tocar
+  envelope.addEventListener("click", () => {
+    envelope.classList.add("open");
+    music.play().catch(()=>{});
+    sorpresa.style.display = "block";
+  });
+</script>
+
+</body>
+</html>
